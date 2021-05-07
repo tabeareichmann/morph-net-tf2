@@ -23,7 +23,7 @@ class MorphNetModel(object):
                  num_classes,
                  learning_rate=1e-3,
                  batch_size=256,
-                 num_gpus=0,
+                 num_gpus=1,
                  main_train_device="/cpu:0",
                  main_eval_device="/gpu:0",
                  morphnet_regularizer_algorithm="GroupLasso",

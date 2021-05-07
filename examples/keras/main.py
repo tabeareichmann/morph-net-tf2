@@ -33,7 +33,7 @@ def main():
     log_dir_default = "./morphnet_log"
     main_train_device_default = "/cpu:0"
     main_eval_device_default = "/gpu:0"
-    num_cuda_device_default = 4
+    num_cuda_device_default = 1
     random_seed_default = 0
     base_model_choices = [
         "ResNet50", "ResNet101", "ResNet152", "ResNet50V2", "ResNet101V2",
