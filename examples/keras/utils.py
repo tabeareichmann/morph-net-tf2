@@ -12,6 +12,7 @@ import tensorflow as tf
 import numpy as np
 from tqdm import tqdm, trange
 from tensorflow.python.keras.layers import VersionAwareLayers
+from tensorflow.python.keras.engine import training
 
 
 def select_keras_base_model(base_model_name):
