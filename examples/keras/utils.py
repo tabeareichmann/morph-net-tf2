@@ -124,9 +124,7 @@ def select_keras_base_model(base_model_name):
 
 
         base_model = create_LeNet()
-        base_model.compile(loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True),
-                      optimizer=tf.keras.optimizers.SGD(learning_rate=1e-2),
-                      metrics=['accuracy'])
+        
 
         base_model.summary()
     else:
