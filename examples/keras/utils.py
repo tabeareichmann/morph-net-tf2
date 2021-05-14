@@ -63,7 +63,7 @@ def select_keras_base_model(base_model_name):
     elif base_model_name == "NASNetMobile":
         base_model = tf.keras.applications.nasnet.NASNetMobile
     elif base_model_name == "LeNet":
-        def create_LeNet(IMG_SHAPE: Tuple[int, int, int]) -> tf.keras.Model:
+        def create_LeNet() -> tf.keras.Model:
             """
             Returns uncompiled LeNet5 model.
             :param: IMG_SHAPE: Tuple[int, int, int]
@@ -83,7 +83,7 @@ def select_keras_base_model(base_model_name):
                         filters=20,
                         kernel_size=(5, 5),
                         padding="same",
-                        input_shape=IMG_SHAPE,
+                        input_shape=[28,28,1],
                         activation="relu",
                         name="Conv1"))
 
@@ -123,7 +123,7 @@ def select_keras_base_model(base_model_name):
             return model
 
 
-        base_model = create_LeNet([28,28,1])
+        base_model = create_LeNet()
         base_model.compile(loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True),
                       optimizer=tf.keras.optimizers.SGD(learning_rate=1e-2),
                       metrics=['accuracy'])
