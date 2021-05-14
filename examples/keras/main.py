@@ -23,7 +23,7 @@ def main():
     num_epochs_default = 100
     num_classes_default = 10
     batch_size_default = 1024
-    base_model_name_default = "LeNet"
+    base_model_name_default = "ResNet50"
     learning_rate_default = 0.0001
     morphnet_regularizer_algorithm_default = "GroupLasso"
     morphnet_target_cost_default = "FLOPs"
@@ -137,7 +137,7 @@ def main():
     set_reproducible_environment(random_seed=random_seed)
 
     (x_train, y_train), (x_valid,
-                         y_valid) = tf.keras.datasets.mnist.load_data()
+                         y_valid) = tf.keras.datasets.cifar100.load_data()
     # Convert class vectors to binary class matrices.
     y_train_onehot = tf.keras.utils.to_categorical(y_train, num_classes)
     y_valid_onehot = tf.keras.utils.to_categorical(y_valid, num_classes)

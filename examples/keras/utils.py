@@ -64,7 +64,7 @@ def select_keras_base_model(base_model_name):
         base_model = tf.keras.applications.nasnet.NASNetLarge
     elif base_model_name == "NASNetMobile":
         base_model = tf.keras.applications.nasnet.NASNetMobile
-    elif base_model_name == "LeNet":
+    '''elif base_model_name == "LeNet":
         global layers
         layers = VersionAwareLayers()
 
@@ -94,7 +94,7 @@ def select_keras_base_model(base_model_name):
             activation="softmax")
 
 
-        base_model = training.Model(layers.Input(shape=[28,28,1]), x)
+        base_model = training.Model(layers.Input(shape=[28,28,1]), x)'''
 
     else:
         raise Exception("Unsupported Base Model!")
