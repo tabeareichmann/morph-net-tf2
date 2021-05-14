@@ -65,6 +65,8 @@ def select_keras_base_model(base_model_name):
         base_model = tf.keras.applications.nasnet.NASNetMobile
     elif base_model_name == "LeNet":
 
+    
+
 
             #model = tf.keras.models.Sequential()
         x=layers.Conv2D(filters=20,
@@ -91,7 +93,7 @@ def select_keras_base_model(base_model_name):
             activation="softmax")
 
 
-        base_model = training.Model(inputs, x, name='mobilenet_%0.2f_%s' % (alpha, rows))
+        base_model = training.Model(inputs, x)
 
     else:
         raise Exception("Unsupported Base Model!")
