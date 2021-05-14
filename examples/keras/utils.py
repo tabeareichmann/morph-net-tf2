@@ -64,8 +64,7 @@ def select_keras_base_model(base_model_name):
     elif base_model_name == "NASNetMobile":
         base_model = tf.keras.applications.nasnet.NASNetMobile
     elif base_model_name == "LeNet":
-
-    
+        global layers = VersionAwareLayers()
 
 
             #model = tf.keras.models.Sequential()
