@@ -137,7 +137,7 @@ def main():
     set_reproducible_environment(random_seed=random_seed)
 
     (x_train, y_train), (x_valid,
-                         y_valid) = tf.keras.datasets.cifar10.load_data()
+                         y_valid) = tf.keras.datasets.mnist.load_data()
     # Convert class vectors to binary class matrices.
     y_train_onehot = tf.keras.utils.to_categorical(y_train, num_classes)
     y_valid_onehot = tf.keras.utils.to_categorical(y_valid, num_classes)
