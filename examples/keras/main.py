@@ -23,7 +23,7 @@ def main():
     num_epochs_default = 100
     num_classes_default = 10
     batch_size_default = 1024
-    base_model_name_default = "ResNet50"
+    base_model_name_default = "LeNet"
     learning_rate_default = 0.0001
     morphnet_regularizer_algorithm_default = "GroupLasso"
     morphnet_target_cost_default = "FLOPs"
@@ -40,7 +40,7 @@ def main():
         "ResNet101V2", "ResNet152V2", "VGG16", "VGG19", "Xception",
         "InceptionV3", "InceptionResNetV2", "MobileNet", "MobileNetV2",
         "DenseNet121", "DenseNet169", "DenseNet201", "NASNetLarge",
-        "NASNetMobile"
+        "NASNetMobile", "LeNet"
     ]
     morphnet_regularizer_algorithm_choices = ["GroupLasso", "Gamma"]
     morphnet_target_cost_choices = ["FLOPs", "Latency", "ModelSize"]

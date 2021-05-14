@@ -83,8 +83,8 @@ def select_keras_base_model(base_model_name):
                       metrics=['accuracy'])
 
         base_model.summary()
-            else:
-                raise Exception("Unsupported Base Model!")
+    else:
+        raise Exception("Unsupported Base Model!")
 
     return base_model
 
