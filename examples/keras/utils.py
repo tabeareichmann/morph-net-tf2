@@ -94,7 +94,7 @@ def select_keras_base_model(base_model_name):
             activation="softmax")
 
 
-        base_model = training.Model(inputs, x)
+        base_model = training.Model(layers.Input(shape=[28,28,1]), x)
 
     else:
         raise Exception("Unsupported Base Model!")
