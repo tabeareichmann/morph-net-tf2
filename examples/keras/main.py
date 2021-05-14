@@ -21,7 +21,7 @@ def main():
         description="Run MorphNet Algorithm on Image Classification Model Zoo.")
 
     num_epochs_default = 100
-    num_classes_default = 10
+    num_classes_default = 100
     batch_size_default = 1024
     base_model_name_default = "ResNet50"
     learning_rate_default = 0.0001
