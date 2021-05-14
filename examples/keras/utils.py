@@ -63,21 +63,67 @@ def select_keras_base_model(base_model_name):
     elif base_model_name == "NASNetMobile":
         base_model = tf.keras.applications.nasnet.NASNetMobile
     elif base_model_name == "LeNet":
-        def create_classical_model():
-        # A simple model based off LeNet from https://keras.io/examples/mnist_cnn/
-            model = tf.keras.Sequential()
-            model.add(tf.keras.layers.Conv2D(6, [5, 5], activation='tanh', input_shape=(28,28,1)))
-            model.add(tf.keras.layers.AveragePooling2D(pool_size=(2, 2)))
-            model.add(tf.keras.layers.Conv2D(16, [5, 5], activation='tanh'))
-            model.add(tf.keras.layers.AveragePooling2D(pool_size=(2, 2)))
-            model.add(tf.keras.layers.Conv2D(120, [5, 5], activation='tanh'))
-            model.add(tf.keras.layers.Flatten())
-            model.add(tf.keras.layers.Dense(84, activation='tanh'))
-            model.add(tf.keras.layers.Dense(10))
+        def create_LeNet(IMG_SHAPE: Tuple[int, int, int]) -> tf.keras.Model:
+            """
+            Returns uncompiled LeNet5 model.
+            :param: IMG_SHAPE: Tuple[int, int, int]
+            :return: tf.keras.Model
+            """
+            Convolution2D = tf.keras.layers.Convolution2D
+            MaxPooling2D = tf.keras.layers.MaxPooling2D
+            Flatten = tf.keras.layers.Flatten
+            Dense = tf.keras.layers.Dense
+
+            model = tf.keras.models.Sequential()
+
+            with tf.name_scope("LeNet5"):
+                with tf.name_scope("Convolution_Block"):
+                    # Add the first convolution layer
+                    model.add(Convolution2D(
+                        filters=20,
+                        kernel_size=(5, 5),
+                        padding="same",
+                        input_shape=IMG_SHAPE,
+                        activation="relu",
+                        name="Conv1"))
+
+                    # Add a pooling layer
+                    model.add(MaxPooling2D(
+                        pool_size=(2, 2),
+                        strides=(2, 2),
+                        name="MaxPool1"))
+
+                    # Add the second convolution layer
+                    model.add(Convolution2D(
+                        filters=50,
+                        kernel_size=(5, 5),
+                        padding="same",
+                        activation="relu",
+                        name="Conv2"))
+
+                    # Add a second pooling layer
+                    model.add(MaxPooling2D(
+                        pool_size=(2, 2),
+                        strides=(2, 2),
+                        name="MaxPool2"))
+
+                # Flatten the network
+                model.add(Flatten())
+
+                with tf.name_scope("Dense_Block"):
+                    # Add a fully-connected hidden layer
+                    model.add(Dense(500,
+                                    activation="relu",
+                                    name="Dense3"))
+
+                    # Add a fully-connected output layer
+                    model.add(Dense(10,
+                                    activation="softmax",
+                                    name="Dense4"))
             return model
 
 
-        base_model = create_classical_model()
+        base_model = create_LeNet([28,28,1])
         base_model.compile(loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True),
                       optimizer=tf.keras.optimizers.SGD(learning_rate=1e-2),
                       metrics=['accuracy'])
