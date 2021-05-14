@@ -62,8 +62,29 @@ def select_keras_base_model(base_model_name):
         base_model = tf.keras.applications.nasnet.NASNetLarge
     elif base_model_name == "NASNetMobile":
         base_model = tf.keras.applications.nasnet.NASNetMobile
-    else:
-        raise Exception("Unsupported Base Model!")
+    elif base_model_name == "LeNet":
+        def create_classical_model():
+        # A simple model based off LeNet from https://keras.io/examples/mnist_cnn/
+            model = tf.keras.Sequential()
+            model.add(tf.keras.layers.Conv2D(6, [5, 5], activation='tanh', input_shape=(28,28,1)))
+            model.add(tf.keras.layers.AveragePooling2D(pool_size=(2, 2)))
+            model.add(tf.keras.layers.Conv2D(16, [5, 5], activation='tanh'))
+            model.add(tf.keras.layers.AveragePooling2D(pool_size=(2, 2)))
+            model.add(tf.keras.layers.Conv2D(120, [5, 5], activation='tanh'))
+            model.add(tf.keras.layers.Flatten())
+            model.add(tf.keras.layers.Dense(84, activation='tanh'))
+            model.add(tf.keras.layers.Dense(10))
+            return model
+
+
+        base_model = create_classical_model()
+        base_model.compile(loss=tf.keras.losses.CategoricalCrossentropy(from_logits=True),
+                      optimizer=tf.keras.optimizers.SGD(learning_rate=1e-2),
+                      metrics=['accuracy'])
+
+        base_model.summary()
+            else:
+                raise Exception("Unsupported Base Model!")
 
     return base_model
 
