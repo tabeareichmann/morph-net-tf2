@@ -104,9 +104,9 @@ def LeNet(input_shape=None,
   x = layers.MaxPooling2D(pool_size = (2, 2), strides =  (2, 2), name="MaxPool1")
   x = layers.Convolution2D(filters = 50, kernel_size = (5, 5), padding = "same", activation="relu", name="Conv2")
   x = layers.MaxPooling2D(pool_size = (2, 2), strides = (2, 2), name="MaxPool2")
-  x = Flatten()
-  x = Dense(500, activation="relu", name="Dense3")
-  x = Dense(10, activation="softmax", name="Dense4")
+  x = layers.Flatten()
+  x = layers.Dense(500, activation="relu", name="Dense3")
+  x = layers.Dense(10, activation="softmax", name="Dense4")
 
   if include_top:
     if backend.image_data_format() == 'channels_first':
