@@ -64,6 +64,8 @@ def select_keras_base_model(base_model_name):
         base_model = tf.keras.applications.nasnet.NASNetLarge
     elif base_model_name == "NASNetMobile":
         base_model = tf.keras.applications.nasnet.NASNetMobile
+    elif base_model_name == "LeNet":
+        
     else:
         raise Exception("Unsupported Base Model!")
     '''elif base_model_name == "LeNet":
