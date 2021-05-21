@@ -106,7 +106,7 @@ def LeNet(input_shape=None,
   x = layers.Convolution2D(filters = 50, kernel_size = (5, 5), padding = "same", activation="relu", name="Conv2")(x)
   x = layers.MaxPooling2D(pool_size = (2, 2), strides = (2, 2), name="MaxPool2")(x)
   shape = np.prod(x.shape[1:])
-  x = Reshape((shape,))(x)
+  x = layers.Reshape((shape,))(x)
   x = layers.Dense(500, activation="relu", name="Dense3")(x)
   x = layers.Dense(10, activation="softmax", name="Dense4")(x)
 
