@@ -106,7 +106,7 @@ def LeNet(input_shape=None,
   x = layers.MaxPooling2D(pool_size = (2, 2), strides = (2, 2), name="MaxPool2")
   x = layers.Flatten()
   x = layers.Dense(500, activation="relu", name="Dense3")
-  x = layers.Dense(10, activation="softmax", name="Dense4").output
+  x = layers.Dense(10, activation="softmax", name="Dense4")
 
 
   # Ensure that the model takes into account
