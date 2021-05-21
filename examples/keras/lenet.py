@@ -106,27 +106,8 @@ def LeNet(input_shape=None,
   x = layers.MaxPooling2D(pool_size = (2, 2), strides = (2, 2), name="MaxPool2")
   x = layers.Flatten()
   x = layers.Dense(500, activation="relu", name="Dense3")
-  x = layers.Dense(10, activation="softmax", name="Dense4")
+  x = layers.Dense(10, activation="softmax", name="Dense4").output
 
-  if include_top:
-    if backend.image_data_format() == 'channels_first':
-      shape = (int(1024 * alpha), 1, 1)
-    else:
-      shape = (1, 1, int(1024 * alpha))
-
-    x = layers.GlobalAveragePooling2D()(x)
-    x = layers.Reshape(shape, name='reshape_1')(x)
-    x = layers.Dropout(dropout, name='dropout')(x)
-    x = layers.Conv2D(classes, (1, 1), padding='same', name='conv_preds')(x)
-    x = layers.Reshape((classes,), name='reshape_2')(x)
-    imagenet_utils.validate_activation(classifier_activation, weights)
-    x = layers.Activation(activation=classifier_activation,
-                          name='predictions')(x)
-  else:
-    if pooling == 'avg':
-      x = layers.GlobalAveragePooling2D()(x)
-    elif pooling == 'max':
-      x = layers.GlobalMaxPooling2D()(x)
 
   # Ensure that the model takes into account
   # any potential predecessors of `input_tensor`.
