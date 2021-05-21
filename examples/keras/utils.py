@@ -13,6 +13,7 @@ import numpy as np
 from tqdm import tqdm, trange
 from tensorflow.python.keras.layers import VersionAwareLayers
 from tensorflow.python.keras.engine import training
+from lenet import LeNet
 
 
 def select_keras_base_model(base_model_name):
@@ -65,7 +66,7 @@ def select_keras_base_model(base_model_name):
     elif base_model_name == "NASNetMobile":
         base_model = tf.keras.applications.nasnet.NASNetMobile
     elif base_model_name == "LeNet":
-        
+        base_model = LeNet
     else:
         raise Exception("Unsupported Base Model!")
     '''elif base_model_name == "LeNet":
