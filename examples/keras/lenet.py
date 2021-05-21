@@ -100,7 +100,7 @@ def LeNet(input_shape=None,
     else:
       img_input = input_tensor
 
-   x = layers.Convolution2D(filters = 20, kernel_size = (5, 5), padding = "same", input_shape = (28, 28, 1), activation="relu", name="Conv1")
+  x = layers.Convolution2D(filters = 20, kernel_size = (5, 5), padding = "same", input_shape = (28, 28, 1), activation="relu", name="Conv1")
   x = layers.MaxPooling2D(pool_size = (2, 2), strides =  (2, 2), name="MaxPool1")
   x = layers.Convolution2D(filters = 50, kernel_size = (5, 5), padding = "same", activation="relu", name="Conv2")
   x = layers.MaxPooling2D(pool_size = (2, 2), strides = (2, 2), name="MaxPool2")
