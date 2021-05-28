@@ -7,6 +7,7 @@ from tensorflow.python.keras.utils import layer_utils
 from tensorflow.python.lib.io import file_io
 from tensorflow.python.platform import tf_logging as logging
 from tensorflow.python.util.tf_export import keras_export
+from tensorflow import keras
 import numpy as np
 
 BASE_WEIGHT_PATH = ('https://storage.googleapis.com/tensorflow/'
