@@ -106,10 +106,11 @@ def LeNet(input_shape=None,
   x = layers.MaxPooling2D(pool_size = (2, 2), strides =  (2, 2), name="MaxPool1")(x)
   x = layers.Convolution2D(filters = 50, kernel_size = (5, 5), padding = "same", activation="relu", name="Conv2")(x)
   x = layers.MaxPooling2D(pool_size = (2, 2), strides = (2, 2), name="MaxPool2")(x)
-  y = x.shape
-  shape = np.prod(x.shape[1:])
-  reshaper=keras.layers.Lambda(lambda x: keras.backend.reshape(x, shape=(y, shape)))
-  x = reshaper(x)
+  #y = x.shape
+  #shape = np.prod(x.shape[1:])
+  #reshaper=keras.layers.Lambda(lambda x: keras.backend.reshape(x, shape=(y, shape)))
+  #x = reshaper(x)
+  x = Reshape((-1,))(x)
   x = layers.Dense(500, activation="relu", name="Dense3")(x)
   x = layers.Dense(10, activation="softmax", name="Dense4")(x)
 
