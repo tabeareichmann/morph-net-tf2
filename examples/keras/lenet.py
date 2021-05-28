@@ -6,23 +6,20 @@ from tensorflow.python.keras.utils import data_utils
 from tensorflow.python.keras.utils import layer_utils
 from tensorflow.python.lib.io import file_io
 from tensorflow.python.platform import tf_logging as logging
-from tensorflow.python.util.tf_export import keras_export
 from tensorflow import keras
 import numpy as np
 
 BASE_WEIGHT_PATH = ('https://storage.googleapis.com/tensorflow/'
-                    'keras-applications/mobilenet/')
+                    'keras-applications/lenet/')
 layers = None
 
 
-@keras_export('keras.applications.mobilenet.MobileNet',
-              'keras.applications.MobileNet')
 def LeNet(input_shape=None,
               alpha=1.0,
               depth_multiplier=1,
               dropout=1e-3,
               include_top=True,
-              weights='imagenet',
+              weights='None',
               input_tensor=None,
               pooling=None,
               classes=10,
