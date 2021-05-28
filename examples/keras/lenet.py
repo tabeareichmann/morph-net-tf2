@@ -22,10 +22,10 @@ def LeNet(input_shape=None,
               depth_multiplier=1,
               dropout=1e-3,
               include_top=True,
-              weights='imagenet',
+              weights='mnist',
               input_tensor=None,
               pooling=None,
-              classes=1000,
+              classes=10,
               classifier_activation='softmax',
               **kwargs):
 
@@ -110,9 +110,12 @@ def LeNet(input_shape=None,
   #shape = np.prod(x.shape[1:])
   #reshaper=keras.layers.Lambda(lambda x: keras.backend.reshape(x, shape=(y, shape)))
   #x = reshaper(x)
-  shape = np.prod(x.shape[1:])
-  x = layers.Reshape((shape,))(x)
-  x = layers.Reshape((-1,))(x)
+  if backend.image_data_format() == 'channels_first':
+      shape = (int(400 * alpha), 1, 1)
+  else:
+      shape = (1, 1, int(400 * alpha))
+
+  x = layers.Reshape(shape, name='reshape_1')(x)
   x = layers.Dense(500, activation="relu", name="Dense3")(x)
   x = layers.Dense(10, activation="softmax", name="Dense4")(x)
 
