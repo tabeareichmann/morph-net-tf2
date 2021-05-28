@@ -110,6 +110,8 @@ def LeNet(input_shape=None,
   #shape = np.prod(x.shape[1:])
   #reshaper=keras.layers.Lambda(lambda x: keras.backend.reshape(x, shape=(y, shape)))
   #x = reshaper(x)
+  shape = np.prod(x.shape[1:])
+  x = layers.Reshape((shape,))(x)
   x = layers.Reshape((-1,))(x)
   x = layers.Dense(500, activation="relu", name="Dense3")(x)
   x = layers.Dense(10, activation="softmax", name="Dense4")(x)
