@@ -110,7 +110,7 @@ def LeNet(input_shape=None,
   #shape = np.prod(x.shape[1:])
   #reshaper=keras.layers.Lambda(lambda x: keras.backend.reshape(x, shape=(y, shape)))
   #x = reshaper(x)
-  if backend.image_data_format() == 'channels_first':
+  if backend.image_data_format() != 'channels_first':
       shape = (int(400 * alpha), 1, 1)
   else:
       shape = (1, 1, int(400 * alpha))
