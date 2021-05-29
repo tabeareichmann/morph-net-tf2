@@ -507,6 +507,7 @@ def get_op_size(op):
                 for output_tensor in op.outputs])
   # For regular ops, return the size of the first output tensor.
   shape = op.outputs[0].shape.as_list()
+    print(shape, flush=True)
   if shape:
     return shape[-1]
   return 0
